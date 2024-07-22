@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+body {
+    font-family: 'Space Mono', monospace;
+    margin: 0;
+    padding: 0;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    font-weight: bold;
+    min-height: 250vh; /* Set a minimum height of 100% of the viewport height */
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #35204d;
+    text-align: center; /* Center align the navigation links */
+}
+
+.navbar a, .dropbtn {
+    display: inline-block; /* Make the links behave as block elements */
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: #ddd;
+    color: black;
+    text-align: center;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.content {
+    padding: 20px;
+}
+
+/* Add specific hover colors for each planet link in the dropdown */
+.dropdown-content a[href="mercury.html"]:hover {
+    background-color: #b0b0b0; /* Grayish for Mercury */
+}
+
+.dropdown-content a[href="venus.html"]:hover {
+    background-color: #f5deb3; /* Wheat for Venus */
+}
+
+.dropdown-content a[href="earth.html"]:hover {
+    background-color: #00ff00; /* Green for Earth */
+}
+
+.dropdown-content a[href="mars.html"]:hover {
+    background-color: #ff4500; /* OrangeRed for Mars */
+}
+
+.dropdown-content a[href="jupiter.html"]:hover {
+    background-color: #ffa500; /* Orange for Jupiter */
+}
+
+.dropdown-content a[href="saturn.html"]:hover {
+    background-color: #f4a460; /* SandyBrown for Saturn */
+}
+
+.dropdown-content a[href="uranus.html"]:hover {
+    background-color: #afeeee; /* PaleTurquoise for Uranus */
+}
+
+.dropdown-content a[href="neptune.html"]:hover {
+    background-color: #0000ff; /* Blue for Neptune */
+}
+
+.dropdown-content a[href="pluto.html"]:hover {
+    background-color: #dda0dd; /* Plum for Pluto */
+}
+
+.dropdown-content a[href="mercglossary.html"]:hover {
+    background-color: #b0b0b0; /* Grayish for Mercury */
+}
+
+.dropdown-content a[href="venusglossary.html"]:hover {
+    background-color: #f5deb3; /* Wheat for Venus */
+}
+
+.dropdown-content a[href="earthglossary.html"]:hover {
+    background-color: #00ff00; /* Green for Earth */
+}
+
+.dropdown-content a[href="marsglossary.html"]:hover {
+    background-color: #ff4500; /* OrangeRed for Mars */
+}
+
+.dropdown-content a[href="jupiterglossary.html"]:hover {
+    background-color: #ffa500; /* Orange for Jupiter */
+}
+
+.dropdown-content a[href="saturnglossary.html"]:hover {
+    background-color: #f4a460; /* SandyBrown for Saturn */
+}
+
+.dropdown-content a[href="uranusglossary.html"]:hover {
+    background-color: #afeeee; /* PaleTurquoise for Uranus */
+}
+
+.dropdown-content a[href="neptuneglossary.html"]:hover {
+    background-color: #0000ff; /* Blue for Neptune */
+}
+
+.dropdown-content a[href="plutoglossary.html"]:hover {
+    background-color: #dda0dd; /* Plum for Pluto */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: auto;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Space Mono', monospace;
+    text-align: center;
+}
+
+.solar-system {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    white-space: nowrap;
+}
+
+.planet {
+    border-radius: 50%;
+    margin-right: 50px;
+    margin-top: 150px;
+}
+
+.sun {
+    margin-left: 50px;
+    width: 200px;
+    height: 200px;
+    background: yellow;
+    border: 3px solid black;
+}
+
+.mercury { width: 40px; height: 40px; background: gray; border: 3px solid black; }
+.venus { width: 60px; height: 60px; background: orange; border: 3px solid black; }
+.earth { width: 70px; height: 70px; background: blue; border: 3px solid black; }
+.mars { width: 50px; height: 50px; background: red; border: 3px solid black; }
+.jupiter { width: 140px; height: 140px; background: brown; border: 3px solid black; }
+.saturn { width: 120px; height: 120px; background: goldenrod; border: 3px solid black; }
+.uranus { width: 100px; height: 100px; background: lightblue; border: 3px solid black; }
+.neptune { width: 100px; height: 100px; background: darkblue; border: 3px solid black; }
+.pluto { width: 30px; height: 30px; background: lightgray; border: 3px solid black; }
+
+.glow {
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.animate {
+    animation: fadeInUp 0.5s forwards;
+}
+
+#particle-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: white;
+    animation: particle-move 2s linear infinite;
+}
+
+@keyframes particle-move {
+    from {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-200px) translateX(-200px);
+        opacity: 0;
+    }
+}
+
+.glow {
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+}
+

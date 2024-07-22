@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossary - Planet Information Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="glossary.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="home.html">Home</a>
+    <a href="about.html">About Us</a>
+    <div class="dropdown">
+        <button class="dropbtn">Planets 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="mercury.html">Mercury</a>
+            <a href="venus.html">Venus</a>
+            <a href="earth.html">Earth</a>
+            <a href="mars.html">Mars</a>
+            <a href="jupiter.html">Jupiter</a>
+            <a href="saturn.html">Saturn</a>
+            <a href="uranus.html">Uranus</a>
+            <a href="neptune.html">Neptune</a>
+            <a href="pluto.html">Pluto</a>
+        </div>
+    </div> 
+    <a href="solar-system.html">Solar System Overview</a>
+    <div class="dropdown">
+        <button class="dropbtn">Glossary 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="mercglossary.html">Mercury (DEFINITIONS)</a>
+            <a href="venusglossary.html">Venus (DEFINITIONS)</a>
+            <a href="earthglossary.html">Earth (DEFINITIONS)</a>
+            <a href="marsglossary.html">Mars (DEFINITIONS)</a>
+            <a href="jupiterglossary.html">Jupiter (DEFINITIONS)</a>
+            <a href="saturnglossary.html">Saturn (DEFINITIONS)</a>
+            <a href="uranusglossary.html">Uranus (DEFINITIONS)</a>
+            <a href="neptuneglossary.hmtl">Neptune (DEFINITIONS)</a>
+            <a href="plutoglossary.html">Pluto (DEFINITIONS)</a>
+        </div>
+    </div> 
+    <a href="signup.html">Sign Up</a>
+    <a href="login.html">Log In</a>
+</div>
+
+<div class="content">
+    <h1 class="glow">Glossary (PLUTO)</h1>
+
+    <h2 class="glow">Clyde Tombaugh</h2>
+    <p>Clyde Tombaugh was the American astronomer who discovered Pluto in 1930 at Lowell Observatory in Flagstaff, Arizona. His discovery marked the first identification of a celestial body beyond Neptune in our solar system.</p>
+
+    <h2 class="glow">NASA's New Horizons</h2>
+    <p>NASA's New Horizons is a spacecraft mission launched in 2006 with the primary objective of studying Pluto and its moons. It made its historic flyby of Pluto in July 2015, providing detailed images and data about the dwarf planet's surface, atmosphere, and moons.</p>
+
+    <h2 class="glow">Charon</h2>
+    <p>Charon is the largest moon of Pluto and was discovered in 1978. It is notable for its size relative to Pluto, forming a binary system with Pluto rather than simply orbiting it.</p>
+
+    <h2 class="glow">Nix</h2>
+    <p>Nix is one of the small moons of Pluto, discovered in 2005 by the Hubble Space Telescope. It is irregularly shaped and orbits Pluto at a distance greater than Charon.</p>
+
+    <h2 class="glow">Hydra</h2>
+    <p>Hydra is another small moon of Pluto, also discovered in 2005 by the Hubble Space Telescope. It is irregularly shaped and orbits Pluto at a greater distance than Nix.</p>
+
+    <h2 class="glow">Kerberos</h2>
+    <p>Kerberos is a small moon of Pluto, discovered in 2011 by the Hubble Space Telescope. It has an irregular shape and orbits Pluto between the orbits of Nix and Hydra.</p>
+
+    <h2 class="glow">Styx</h2>
+    <p>Styx is the smallest and outermost moon of Pluto, discovered in 2012 by the Hubble Space Telescope. It has an irregular shape and orbits Pluto at a greater distance than Kerberos.</p>
+
+    <h2 class="glow">Kuiper Belt</h2>
+    <p>The Kuiper Belt is a region of the solar system beyond the orbit of Neptune, extending from about 30 to 50 astronomical units (AU) from the Sun. It is home to numerous small icy bodies, including Pluto, and is considered a relic of the early solar system's formation.</p>
+</div>
+
+<script>
+    // JavaScript to handle the dropdown menu
+    document.addEventListener('DOMContentLoaded', function() {
+        var dropdown = document.querySelector('.dropdown');
+        var dropdownContent = document.querySelector('.dropdown-content');
+
+        dropdown.addEventListener('click', function() {
+            dropdownContent.classList.toggle('show');
+        });
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.querySelectorAll('.dropdown-content');
+                dropdowns.forEach(function(openDropdown) {
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                });
+            }
+        });
+
+        // Handle planet option hover and click for particle effects
+        var planetOptions = document.querySelectorAll('.planet-option');
+        planetOptions.forEach(option => {
+            option.addEventListener('mouseover', function() {
+                createParticles(option, 'hover');
+            });
+
+            option.addEventListener('click', function() {
+                createParticles(option, 'click');
+            });
+        });
+    });
+
+    // Function to handle animations
+    function animateOnScroll(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }
+
+    // Create a new IntersectionObserver
+    const observer = new IntersectionObserver(animateOnScroll, {
+        threshold: 0.5
+    });
+
+    // Observe all elements with the 'animate-on-scroll' class
+    document.querySelectorAll('.animate-on-scroll').forEach(element => {
+        observer.observe(element);
+    });
+
+    function createParticles(element, eventType) {
+        const particleContainer = document.getElementById('particle-container');
+        const rect = element.getBoundingClientRect();
+        const colors = {
+            mercury: '#b0b0b0',
+            venus: '#f5deb3',
+            earth: '#00ff00',
+            mars: '#ff4500',
+            jupiter: '#ffa500',
+            saturn: '#f4a460',
+            uranus: '#afeeee',
+            neptune: '#0000ff',
+            pluto: '#dda0dd'
+        };
+        const planet = element.dataset.planet;
+        const color = colors[planet] || 'white';
+
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.backgroundColor = color;
+            particle.style.left = `${rect.left + rect.width / 2}px`;
+            particle.style.top = `${rect.top + rect.height / 2}px`;
+
+            if (eventType === 'click') {
+                particle.style.animationDuration = '2s';
+            } else {
+                particle.style.animationDuration = '1s';
+            }
+
+            particleContainer.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 2000);
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossary - Planet Information Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="glossary.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="home.html">Home</a>
+    <a href="about.html">About Us</a>
+    <div class="dropdown">
+        <button class="dropbtn">Planets 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="mercury.html">Mercury</a>
+            <a href="venus.html">Venus</a>
+            <a href="earth.html">Earth</a>
+            <a href="mars.html">Mars</a>
+            <a href="jupiter.html">Jupiter</a>
+            <a href="saturn.html">Saturn</a>
+            <a href="uranus.html">Uranus</a>
+            <a href="neptune.html">Neptune</a>
+            <a href="pluto.html">Pluto</a>
+        </div>
+    </div> 
+    <a href="solar-system.html">Solar System Overview</a>
+    <div class="dropdown">
+        <button class="dropbtn">Glossary 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="mercglossary.html">Mercury (DEFINITIONS)</a>
+            <a href="venusglossary.html">Venus (DEFINITIONS)</a>
+            <a href="earthglossary.html">Earth (DEFINITIONS)</a>
+            <a href="marsglossary.html">Mars (DEFINITIONS)</a>
+            <a href="jupiterglossary.html">Jupiter (DEFINITIONS)</a>
+            <a href="saturnglossary.html">Saturn (DEFINITIONS)</a>
+            <a href="uranusglossary.html">Uranus (DEFINITIONS)</a>
+            <a href="neptuneglossary.html">Neptune (DEFINITIONS)</a>
+            <a href="plutoglossary.html">Pluto (DEFINITIONS)</a>
+        </div>
+    </div> 
+    <a href="signup.html">Sign Up</a>
+    <a href="login.html">Log In</a>
+</div>
+
+<div class="content">
+    <h1 class="glow">Glossary (SATURN)</h1>
+
+    <h2 class="glow">Ring System</h2>
+    <p>Saturn's ring system is the most extensive and complex in the solar system, composed of countless ice particles ranging from tiny grains to large chunks. The rings are divided into several sections named alphabetically in the order of their discovery.</p>
+
+    <h2 class="glow">Titan</h2>
+    <p>Titan is Saturn's largest moon and the second-largest moon in the solar system. It has a thick atmosphere primarily composed of nitrogen, with lakes and rivers of liquid methane and ethane on its surface, making it a key target in the search for extraterrestrial life.</p>
+
+    <h2 class="glow">Enceladus</h2>
+    <p>Enceladus is a small, icy moon of Saturn known for its geysers that spew water vapor and ice particles from its subsurface ocean through cracks in its icy crust. These plumes suggest potential habitability and have been a major focus of astrobiological studies.</p>
+
+    <h2 class="glow">Jet Streams</h2>
+    <p>Saturn exhibits powerful jet streams in its atmosphere, with winds reaching speeds of up to 1,800 kilometers per hour (1,100 miles per hour). These jet streams contribute to the planet's distinctive banded appearance.</p>
+
+    <h2 class="glow">Hexagonal Polar Vortex</h2>
+    <p>The hexagonal polar vortex on Saturn's north pole is a persistent, hexagon-shaped cloud pattern. This unique feature, first observed by the Voyager spacecraft and later studied in detail by the Cassini mission, spans about 30,000 kilometers (18,600 miles) across.</p>
+
+    <h2 class="glow">NASA's Cassini</h2>
+    <p>NASA's Cassini spacecraft was a mission to study Saturn and its moons, launched in 1997. It provided a wealth of information about the planet's rings, atmosphere, and magnetosphere, as well as detailed observations of moons like Titan and Enceladus, before concluding its mission in 2017.</p>
+</div>
+
+<script>
+    // JavaScript to handle the dropdown menu
+    document.addEventListener('DOMContentLoaded', function() {
+        var dropdown = document.querySelector('.dropdown');
+        var dropdownContent = document.querySelector('.dropdown-content');
+
+        dropdown.addEventListener('click', function() {
+            dropdownContent.classList.toggle('show');
+        });
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.querySelectorAll('.dropdown-content');
+                dropdowns.forEach(function(openDropdown) {
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                });
+            }
+        });
+
+        // Handle planet option hover and click for particle effects
+        var planetOptions = document.querySelectorAll('.planet-option');
+        planetOptions.forEach(option => {
+            option.addEventListener('mouseover', function() {
+                createParticles(option, 'hover');
+            });
+
+            option.addEventListener('click', function() {
+                createParticles(option, 'click');
+            });
+        });
+    });
+
+    // Function to handle animations
+    function animateOnScroll(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }
+
+    // Create a new IntersectionObserver
+    const observer = new IntersectionObserver(animateOnScroll, {
+        threshold: 0.5
+    });
+
+    // Observe all elements with the 'animate-on-scroll' class
+    document.querySelectorAll('.animate-on-scroll').forEach(element => {
+        observer.observe(element);
+    });
+
+    function createParticles(element, eventType) {
+        const particleContainer = document.getElementById('particle-container');
+        const rect = element.getBoundingClientRect();
+        const colors = {
+            mercury: '#b0b0b0',
+            venus: '#f5deb3',
+            earth: '#00ff00',
+            mars: '#ff4500',
+            jupiter: '#ffa500',
+            saturn: '#f4a460',
+            uranus: '#afeeee',
+            neptune: '#0000ff',
+            pluto: '#dda0dd'
+        };
+        const planet = element.dataset.planet;
+        const color = colors[planet] || 'white';
+
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.backgroundColor = color;
+            particle.style.left = `${rect.left + rect.width / 2}px`;
+            particle.style.top = `${rect.top + rect.height / 2}px`;
+
+            if (eventType === 'click') {
+                particle.style.animationDuration = '2s';
+            } else {
+                particle.style.animationDuration = '1s';
+            }
+
+            particleContainer.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 2000);
+        }
+    }
+</script>
+
+</body>
+</html>

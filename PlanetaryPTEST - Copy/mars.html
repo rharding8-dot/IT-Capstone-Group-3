@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars - Planet Information Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mars.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="home.html">Home</a>
+    <a href="about.html">About Us</a>
+    <div class="dropdown">
+        <button class="dropbtn">Planets 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="mercury.html">Mercury</a>
+            <a href="venus.html">Venus</a>
+            <a href="earth.html">Earth</a>
+            <a href="mars.html">Mars</a>
+            <a href="jupiter.html">Jupiter</a>
+            <a href="saturn.html">Saturn</a>
+            <a href="uranus.html">Uranus</a>
+            <a href="neptune.html">Neptune</a>
+            <a href="pluto.html">Pluto</a>
+        </div>
+    </div> 
+    <a href="solar-system.html">Solar System Overview</a>
+    <div class="dropdown">
+        <button class="dropbtn">Glossary 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="mercglossary.html">Mercury (DEFINITIONS)</a>
+            <a href="venusglossary.html">Venus (DEFINITIONS)</a>
+            <a href="earthglossary.html">Earth (DEFINITIONS)</a>
+            <a href="marsglossary.html">Mars (DEFINITIONS)</a>
+            <a href="jupiterglossary.html">Jupiter (DEFINITIONS)</a>
+            <a href="saturnglossary.html">Saturn (DEFINITIONS)</a>
+            <a href="uranusglossary.html">Uranus (DEFINITIONS)</a>
+            <a href="neptuneglossary.html">Neptune (DEFINITIONS)</a>
+            <a href="plutoglossary.html">Pluto (DEFINITIONS)</a>
+        </div>
+    </div> 
+    <a href="signup.html">Sign Up</a>
+    <a href="login.html">Log In</a>
+</div>
+
+<div class="content">
+    <h1 class="glow">Mars</h1>
+    <div class="info-box" id="info-box">
+        <p id="slide-info">
+            <strong>Formation and Early History:</strong><br>
+            Mars, the fourth planet from the Sun, has captivated scientists with its potential for harboring life and its resemblance to Earth. Formed approximately 4.6 billion years ago, Mars underwent a tumultuous period of planetary accretion, shaping its rocky surface and thin atmosphere. Early in its history, Mars likely possessed liquid water on its surface, evidenced by ancient river valleys, lakebeds, and deltas. Understanding Mars' geological evolution provides insights into the conditions that could have supported life and the planet's potential for habitability in the distant past.
+        </p>
+        <p>
+            <strong>Geological Features and Surface Conditions:</strong><br>
+            Mars' surface is characterized by a diverse range of geological features, including vast plains, towering volcanoes, and deep canyons. The planet's most prominent feature, <a href="marsglossary.html">Olympus Mons</a>, is the largest volcano in the solar system, rising over 21 kilometers above the Martian surface. <a href="marsglossary.html">Valles Marineris</a>, a system of canyons stretching over 4,000 kilometers long, dwarfs Earth's Grand Canyon and serves as a testament to Mars' geologic activity. Martian soil, rich in iron oxide, gives the planet its distinctive reddish appearance and has led to its nickname as the "Red Planet."
+        </p>
+        <p>
+            <strong>Exploration and Robotic Missions:</strong><br>
+            Mars exploration has been a focus of scientific inquiry for decades, with numerous robotic missions providing valuable data about the planet's surface and atmosphere. NASA's Mars rovers, including <a href="marsglossary.html">Spirit, Opportunity, and Curiosity</a>, have traversed the Martian terrain, conducting geological surveys and searching for signs of past water activity. The European Space Agency's <a href="marsglossary.html">Mars Express</a> orbiter has mapped the planet's surface in unprecedented detail, revealing features such as ice caps, dust storms, and seasonal changes. These missions pave the way for future human exploration of Mars and advance our understanding of its potential for life.
+        </p>
+        <p>
+            <strong>Potential for Habitability and Astrobiology:</strong><br>
+            Mars' past and present environments hold clues to the planet's potential habitability and the existence of life beyond Earth. Evidence of ancient riverbeds, lake basins, and mineral deposits suggests that liquid water once flowed on the Martian surface, raising intriguing questions about the possibility of past life. Recent discoveries of methane in Mars' atmosphere have fueled speculation about biological or geological sources of the gas. Studying Mars' subsurface and searching for biosignatures are priorities for upcoming missions, including NASA's <a href="marsglossary.html">Perseverance</a> rover and the <a href="marsglossary.html">European-Russian ExoMars mission</a>.
+        </p>
+        <p>
+            <strong>Future Exploration and Human Settlement:</strong><br>
+            Mars continues to inspire ambitious plans for human exploration and eventual settlement. <a href="marsglossary.html">SpaceX</a>, NASA, and other space agencies are developing technologies and mission architectures for crewed missions to Mars, with the goal of establishing a sustainable human presence on the planet. Challenges such as radiation exposure, extreme temperatures, and resource utilization must be overcome to ensure the safety and success of future Martian colonists. The dream of living on Mars represents humanity's innate curiosity and our desire to expand beyond Earth, shaping the future of space exploration and the destiny of our species.
+        </p>
+
+        <img src="transpmars.png" alt="Venus">
+       
+    </div>
+</div>
+
+<!-- Video box with fullscreen toggle -->
+<div class="video-box" id="video-box">
+    <video id="video" autoplay muted loop>
+        <source src="Mars Edited.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+</div>
+
+<script>
+    // JavaScript to handle the dropdown menu
+    document.addEventListener('DOMContentLoaded', function() {
+        var dropdown = document.querySelector('.dropdown');
+        var dropdownContent = document.querySelector('.dropdown-content');
+
+        dropdown.addEventListener('click', function() {
+            dropdownContent.classList.toggle('show');
+        });
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.querySelectorAll('.dropdown-content');
+                dropdowns.forEach(function(openDropdown) {
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                });
+            }
+        });
+
+        // Handle planet option hover and click for particle effects
+        var planetOptions = document.querySelectorAll('.planet-option');
+        planetOptions.forEach(option => {
+            option.addEventListener('mouseover', function() {
+                createParticles(option, 'hover');
+            });
+
+            option.addEventListener('click', function() {
+                createParticles(option, 'click');
+            });
+        });
+    });
+
+    // Function to handle animations
+    function animateOnScroll(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }
+
+    // Create a new IntersectionObserver
+    const observer = new IntersectionObserver(animateOnScroll, {
+        threshold: 0.5
+    });
+
+    // Observe all elements with the 'animate-on-scroll' class
+    document.querySelectorAll('.animate-on-scroll').forEach(element => {
+        observer.observe(element);
+    });
+
+    function createParticles(element, eventType) {
+        const particleContainer = document.getElementById('particle-container');
+        const rect = element.getBoundingClientRect();
+        const colors = {
+            mercury: '#b0b0b0',
+            venus: '#f5deb3',
+            earth: '#00ff00',
+            mars: '#ff4500',
+            jupiter: '#ffa500',
+            saturn: '#f4a460',
+            uranus: '#afeeee',
+            neptune: '#0000ff',
+            pluto: '#dda0dd'
+        };
+        const planet = element.dataset.planet;
+        const color = colors[planet] || 'white';
+
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.backgroundColor = color;
+            particle.style.left = `${rect.left + rect.width / 2}px`;
+            particle.style.top = `${rect.top + rect.height / 2}px`;
+
+            if (eventType === 'click') {
+                particle.style.animationDuration = '2s';
+            } else {
+                particle.style.animationDuration = '1s';
+            }
+
+            particleContainer.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 2000);
+        }
+    }
+</script>
+
+</body>
+</html>

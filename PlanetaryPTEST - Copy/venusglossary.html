@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossary - Planet Information Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="glossary.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="home.html">Home</a>
+    <a href="about.html">About Us</a>
+    <div class="dropdown">
+        <button class="dropbtn">Planets 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="mercury.html">Mercury</a>
+            <a href="venus.html">Venus</a>
+            <a href="earth.html">Earth</a>
+            <a href="mars.html">Mars</a>
+            <a href="jupiter.html">Jupiter</a>
+            <a href="saturn.html">Saturn</a>
+            <a href="uranus.html">Uranus</a>
+            <a href="neptune.html">Neptune</a>
+            <a href="pluto.html">Pluto</a>
+        </div>
+    </div> 
+    <a href="solar-system.html">Solar System Overview</a>
+    <div class="dropdown">
+        <button class="dropbtn">Glossary 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="mercglossary.html">Mercury (DEFINITIONS)</a>
+            <a href="venusglossary.html">Venus (DEFINITIONS)</a>
+            <a href="earthglossary.html">Earth (DEFINITIONS)</a>
+            <a href="marsglossary.html">Mars (DEFINITIONS)</a>
+            <a href="jupiterglossary.html">Jupiter (DEFINITIONS)</a>
+            <a href="saturnglossary.html">Saturn (DEFINITIONS)</a>
+            <a href="uranusglossary.html">Uranus (DEFINITIONS)</a>
+            <a href="neptuneglossary.html">Neptune (DEFINITIONS)</a>
+            <a href="plutoglossary.html">Pluto (DEFINITIONS)</a>
+        </div>
+    </div> 
+    <a href="signup.html">Sign Up</a>
+    <a href="login.html">Log In</a>
+</div>
+
+<div class="content">
+    <h1 class="glow">Glossary (VENUS)</h1>
+
+    <h2 class="glow">Aristotle</h2>
+    <p>Aristotle: An ancient Greek philosopher and scientist whose work laid the foundation for much of Western philosophy and natural science.</p>
+
+    <h2 class="glow">Law of Planetary Motion</h2>
+    <p>Law of Planetary Motion: Refers to Kepler's laws describing the orbits of planets around the sun, including elliptical orbits and the relationship between orbital period and distance from the sun.</p>
+
+    <h2 class="glow">Galileo Galilei</h2>
+    <p>Galileo Galilei: An Italian astronomer, physicist, and engineer who made pioneering observations of the night sky, supporting the Copernican model of heliocentrism.</p>
+
+    <h2 class="glow">Heliocentrism</h2>
+    <p>Heliocentrism: The astronomical model that places the sun at the center of the solar system, with planets orbiting around it, proposed by Copernicus and supported by Galileo.</p>
+
+    <h2 class="glow">NASA's Mariner 2</h2>
+    <p>NASA's Mariner 2: The first successful spacecraft to fly by Venus, launched in 1962, providing valuable data on the planet's atmosphere and surface.</p>
+
+    <h2 class="glow">Venus Express (orbiter)</h2>
+    <p>Venus Express (orbiter): An ESA mission launched in 2005 to study Venus's atmosphere, surface, and interaction with the solar wind, providing detailed data until 2014.</p>
+
+    <h2 class="glow">Akatsuki (orbiter)</h2>
+    <p>Akatsuki (orbiter): A Japanese space probe launched by JAXA in 2010 to study the atmosphere and weather patterns of Venus.</p>
+
+    <h2 class="glow">NASA's VERITAS</h2>
+    <p>NASA's VERITAS: A planned mission to map the surface of Venus in high resolution, aiming to understand its geologic history and why it developed so differently from Earth.</p>
+
+    <h2 class="glow">ESA's EnVision</h2>
+    <p>ESA's EnVision: An upcoming mission by the European Space Agency to study Venus's surface and subsurface, focusing on its geological activity and atmospheric composition.</p>
+</div>
+
+<script>
+    // JavaScript to handle the dropdown menu
+    document.addEventListener('DOMContentLoaded', function() {
+        var dropdown = document.querySelector('.dropdown');
+        var dropdownContent = document.querySelector('.dropdown-content');
+
+        dropdown.addEventListener('click', function() {
+            dropdownContent.classList.toggle('show');
+        });
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.querySelectorAll('.dropdown-content');
+                dropdowns.forEach(function(openDropdown) {
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                });
+            }
+        });
+
+        // Handle planet option hover and click for particle effects
+        var planetOptions = document.querySelectorAll('.planet-option');
+        planetOptions.forEach(option => {
+            option.addEventListener('mouseover', function() {
+                createParticles(option, 'hover');
+            });
+
+            option.addEventListener('click', function() {
+                createParticles(option, 'click');
+            });
+        });
+    });
+
+    // Function to handle animations
+    function animateOnScroll(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }
+
+    // Create a new IntersectionObserver
+    const observer = new IntersectionObserver(animateOnScroll, {
+        threshold: 0.5
+    });
+
+    // Observe all elements with the 'animate-on-scroll' class
+    document.querySelectorAll('.animate-on-scroll').forEach(element => {
+        observer.observe(element);
+    });
+
+    function createParticles(element, eventType) {
+        const particleContainer = document.getElementById('particle-container');
+        const rect = element.getBoundingClientRect();
+        const colors = {
+            mercury: '#b0b0b0',
+            venus: '#f5deb3',
+            earth: '#00ff00',
+            mars: '#ff4500',
+            jupiter: '#ffa500',
+            saturn: '#f4a460',
+            uranus: '#afeeee',
+            neptune: '#0000ff',
+            pluto: '#dda0dd'
+        };
+        const planet = element.dataset.planet;
+        const color = colors[planet] || 'white';
+
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.backgroundColor = color;
+            particle.style.left = `${rect.left + rect.width / 2}px`;
+            particle.style.top = `${rect.top + rect.height / 2}px`;
+
+            if (eventType === 'click') {
+                particle.style.animationDuration = '2s';
+            } else {
+                particle.style.animationDuration = '1s';
+            }
+
+            particleContainer.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 2000);
+        }
+    }
+</script>
+
+</body>
+</html>
