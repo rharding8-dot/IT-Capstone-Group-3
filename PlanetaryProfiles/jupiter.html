@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupiter - Planet Information Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="jupiter.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="home.html">Home</a>
+    <a href="about.html">About Us</a>
+    <div class="dropdown">
+        <button class="dropbtn">Planets 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="mercury.html">Mercury</a>
+            <a href="venus.html">Venus</a>
+            <a href="earth.html">Earth</a>
+            <a href="mars.html">Mars</a>
+            <a href="jupiter.html">Jupiter</a>
+            <a href="saturn.html">Saturn</a>
+            <a href="uranus.html">Uranus</a>
+            <a href="neptune.html">Neptune</a>
+            <a href="pluto.html">Pluto</a>
+        </div>
+    </div> 
+    <a href="solar-system.html">Solar System Overview</a>
+    <div class="dropdown">
+        <button class="dropbtn">Glossary 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="mercglossary.html">Mercury (DEFINITIONS)</a>
+            <a href="venusglossary.html">Venus (DEFINITIONS)</a>
+            <a href="earthglossary.html">Earth (DEFINITIONS)</a>
+            <a href="marsglossary.html">Mars (DEFINITIONS)</a>
+            <a href="jupiterglossary.html">Jupiter (DEFINITIONS)</a>
+            <a href="saturnglossary.html">Saturn (DEFINITIONS)</a>
+            <a href="uranusglossary.html">Uranus (DEFINITIONS)</a>
+            <a href="neptuneglossary.html">Neptune (DEFINITIONS)</a>
+            <a href="plutoglossary.html">Pluto (DEFINITIONS)</a>
+        </div>
+    </div> 
+    <a href="signup.html">Sign Up</a>
+    <a href="login.html">Log In</a>
+</div>
+
+<div class="content">
+    <h1 class="glow">Jupiter</h1>
+    <div class="info-box" id="info-box">
+        <p id="slide-info">
+            <strong>Formation and Early History:</strong><br>
+            Jupiter, the largest planet in our solar system, played a pivotal role in its formation and evolution. Born from the swirling disk of gas and dust that surrounded the young Sun over 4.5 billion years ago, Jupiter's immense gravity shaped the architecture of the solar system, influencing the orbits and trajectories of neighboring planets. Despite its importance, Jupiter's early history remains shrouded in mystery, with scientists speculating about the planet's formation process and the role it played in sculpting the inner and outer regions of the solar system.
+        </p>
+        <p>
+            <strong>Atmosphere and Weather Phenomena:</strong><br>
+            Jupiter's atmosphere is a dynamic and turbulent realm, characterized by colorful bands of clouds, powerful storms, and swirling <a href="jupiterglossary.html">vortices</a>. The planet's most iconic feature, the <a href="jupiterglossary.html">Great Red Spot</a>, is a massive storm system that has persisted for centuries, fueled by the churning forces of Jupiter's atmosphere. Beneath the surface, Jupiter's atmosphere transitions into a dense layer of gas, gradually increasing in pressure and temperature. The complex interplay of atmospheric dynamics, including jet streams and convective processes, creates a mesmerizing tapestry of patterns and structures that continue to fascinate scientists and astronomers.
+        </p>
+        <p>
+            <strong>Magnetosphere and Moons:</strong><br>
+            Jupiter boasts a formidable magnetic field, extending far beyond the planet itself and creating a vast <a href="jupiterglossary.html">magnetosphere</a> that interacts with its environment in profound ways. This magnetic field traps charged particles from the solar wind, generating intense radiation belts and auroral displays that illuminate Jupiter's polar regions. The planet's extensive moon system, which includes the four largest moons known as the <a href="jupiterglossary.html">Galilean moons, Io, Europa, Ganymede, and Callisto</a>, exerts a significant gravitational influence on Jupiter and contributes to its dynamic environment, with tidal forces shaping the moons' surfaces and orbital dynamics.
+        </p>
+        <p>
+            <strong>Exploration and Space Missions:</strong><br>
+            Jupiter has been the target of numerous space missions aimed at unraveling its mysteries and uncovering its secrets. NASA's Juno spacecraft, launched in 2011, entered orbit around Jupiter in 2016 and has been conducting detailed observations of the planet's atmosphere, magnetic field, and interior structure. Previous missions, including <a href="earthglossary.html">Voyager 1 and 2, Galileo, and Pioneer 10 and 11</a>, provided valuable insights into Jupiter's composition, moons, and magnetosphere. These missions have expanded our understanding of the gas giant and its role in the solar system, paving the way for future exploration and discovery.
+        </p>
+        <p>
+            <strong>Scientific Significance and Future Prospects:</strong><br>
+            Jupiter's immense size and unique characteristics make it a focal point of scientific inquiry and exploration. Studying Jupiter provides valuable insights into planetary formation, magnetospheric physics, and the dynamics of gas giant atmospheres. The planet's diverse moon system offers opportunities to investigate potential habitats for life beyond Earth, particularly on ocean worlds like Europa and Ganymede. Future missions, such as NASA's <a href="jupiterglossary.html">Europa Clipper</a> and the <a href="jupiterglossary.html">European Space Agency's Jupiter Icy Moons Explorer (JUICE)</a>, aim to delve deeper into Jupiter's mysteries, uncovering new phenomena and advancing our understanding of the solar system's largest inhabitant.
+        </p>
+
+        <img src="transpjupiter.png" alt="Jupiter">
+       
+    </div>
+</div>
+
+<!-- Video box with fullscreen toggle -->
+<div class="video-box" id="video-box">
+    <video id="video" autoplay muted loop>
+        <source src="Jupiter Edited.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+</div>
+
+<script>
+    // JavaScript to handle the dropdown menu
+    document.addEventListener('DOMContentLoaded', function() {
+        var dropdown = document.querySelector('.dropdown');
+        var dropdownContent = document.querySelector('.dropdown-content');
+
+        dropdown.addEventListener('click', function() {
+            dropdownContent.classList.toggle('show');
+        });
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.querySelectorAll('.dropdown-content');
+                dropdowns.forEach(function(openDropdown) {
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                });
+            }
+        });
+
+        // Handle planet option hover and click for particle effects
+        var planetOptions = document.querySelectorAll('.planet-option');
+        planetOptions.forEach(option => {
+            option.addEventListener('mouseover', function() {
+                createParticles(option, 'hover');
+            });
+
+            option.addEventListener('click', function() {
+                createParticles(option, 'click');
+            });
+        });
+    });
+
+    // Function to handle animations
+    function animateOnScroll(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }
+
+    // Create a new IntersectionObserver
+    const observer = new IntersectionObserver(animateOnScroll, {
+        threshold: 0.5
+    });
+
+    // Observe all elements with the 'animate-on-scroll' class
+    document.querySelectorAll('.animate-on-scroll').forEach(element => {
+        observer.observe(element);
+    });
+
+    function createParticles(element, eventType) {
+        const particleContainer = document.getElementById('particle-container');
+        const rect = element.getBoundingClientRect();
+        const colors = {
+            mercury: '#b0b0b0',
+            venus: '#f5deb3',
+            earth: '#00ff00',
+            mars: '#ff4500',
+            jupiter: '#ffa500',
+            saturn: '#f4a460',
+            uranus: '#afeeee',
+            neptune: '#0000ff',
+            pluto: '#dda0dd'
+        };
+        const planet = element.dataset.planet;
+        const color = colors[planet] || 'white';
+
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.backgroundColor = color;
+            particle.style.left = `${rect.left + rect.width / 2}px`;
+            particle.style.top = `${rect.top + rect.height / 2}px`;
+
+            if (eventType === 'click') {
+                particle.style.animationDuration = '2s';
+            } else {
+                particle.style.animationDuration = '1s';
+            }
+
+            particleContainer.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 2000);
+        }
+    }
+</script>
+
+</body>
+</html>

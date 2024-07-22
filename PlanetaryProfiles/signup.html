@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="navbar">
+    <a href="home.html">Home</a>
+    <a href="about.html">About Us</a>
+    <div class="dropdown">
+        <button class="dropbtn">Planets 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="mercury.html">Mercury</a>
+            <a href="venus.html">Venus</a>
+            <a href="earth.html">Earth</a>
+            <a href="mars.html">Mars</a>
+            <a href="jupiter.html">Jupiter</a>
+            <a href="saturn.html">Saturn</a>
+            <a href="uranus.html">Uranus</a>
+            <a href="neptune.html">Neptune</a>
+            <a href="pluto.html">Pluto</a>
+        </div>
+    </div> 
+    <a href="solar-system.html">Solar System Overview</a>
+    <div class="dropdown">
+        <button class="dropbtn">Glossary 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="mercglossary.html">Mercury (DEFINITIONS)</a>
+            <a href="venusglossary.html">Venus (DEFINITIONS)</a>
+            <a href="earthglossary.html">Earth (DEFINITIONS)</a>
+            <a href="marsglossary.html">Mars (DEFINITIONS)</a>
+            <a href="jupiterglossary.html">Jupiter (DEFINITIONS)</a>
+            <a href="saturnglossary.html">Saturn (DEFINITIONS)</a>
+            <a href="uranusglossary.html">Uranus (DEFINITIONS)</a>
+            <a href="neptuneglossary.html">Neptune (DEFINITIONS)</a>
+            <a href="plutoglossary.html">Pluto (DEFINITIONS)</a>
+        </div>
+    </div> 
+    <a href="signup.html">Sign Up</a>
+    <a href="login.html">Log In</a>
+</div>
+
+<form action="register.php">
+    <div class="container">
+        <h1 class="glow">Sign Up</h1> <!-- Add the "glow" class to the h1 -->
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+
+        <label for="email" class="glow"><b>Email</b></label> <!-- Add the "glow" class to the label -->
+        <input type="text" placeholder="Enter Email" name="email" required>
+
+        <label for="psw" class="glow"><b>Password</b></label> <!-- Add the "glow" class to the label -->
+        <input type="password" placeholder="Enter Password" name="psw" required>
+
+        <label for="psw-repeat" class="glow"><b>Repeat Password</b></label> <!-- Add the "glow" class to the label -->
+        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+        <div class="clearfix">
+            <button type="submit" class="signupbtn">Sign Up</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    // JavaScript to handle the dropdown menu
+    document.addEventListener('DOMContentLoaded', function() {
+        var dropdown = document.querySelector('.dropdown');
+        var dropdownContent = document.querySelector('.dropdown-content');
+
+        dropdown.addEventListener('click', function() {
+            dropdownContent.classList.toggle('show');
+        });
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.querySelectorAll('.dropdown-content');
+                dropdowns.forEach(function(openDropdown) {
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                });
+            }
+        });
+
+        // Handle planet option hover and click for particle effects
+        var planetOptions = document.querySelectorAll('.planet-option');
+        planetOptions.forEach(option => {
+            option.addEventListener('mouseover', function() {
+                createParticles(option, 'hover');
+            });
+
+            option.addEventListener('click', function() {
+                createParticles(option, 'click');
+            });
+        });
+    });
+
+    // Function to handle animations
+    function animateOnScroll(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }
+
+    // Create a new IntersectionObserver
+    const observer = new IntersectionObserver(animateOnScroll, {
+        threshold: 0.5
+    });
+
+    // Observe all elements with the 'animate-on-scroll' class
+    document.querySelectorAll('.animate-on-scroll').forEach(element => {
+        observer.observe(element);
+    });
+
+    function createParticles(element, eventType) {
+        const particleContainer = document.getElementById('particle-container');
+        const rect = element.getBoundingClientRect();
+        const colors = {
+            mercury: '#b0b0b0',
+            venus: '#f5deb3',
+            earth: '#00ff00',
+            mars: '#ff4500',
+            jupiter: '#ffa500',
+            saturn: '#f4a460',
+            uranus: '#afeeee',
+            neptune: '#0000ff',
+            pluto: '#dda0dd'
+        };
+        const planet = element.dataset.planet;
+        const color = colors[planet] || 'white';
+
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.backgroundColor = color;
+            particle.style.left = `${rect.left + rect.width / 2}px`;
+            particle.style.top = `${rect.top + rect.height / 2}px`;
+
+            if (eventType === 'click') {
+                particle.style.animationDuration = '2s';
+            } else {
+                particle.style.animationDuration = '1s';
+            }
+
+            particleContainer.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 2000);
+        }
+    }
+</script>
+
+</body>
+</html>
